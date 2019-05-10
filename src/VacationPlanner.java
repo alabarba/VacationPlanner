@@ -35,12 +35,13 @@ public class VacationPlanner {
 		String currency = input.next();
 		System.out.print("How many " + currency + " are there in 1 USD? ");
 		input= new Scanner (System.in);
-		double exchange = (double)input.nextDouble();
+		double exchange = (double)input.nextDouble(); //There is still the problem that if the user while entering the double value instead of , as separator for the decimal part an exception is raised
 		double budget=money * exchange;
 		double budgetPerDay=moneyPerDay * exchange;
 		System.out.println("If you are travelling for " + days + " days that is the same as " + hours + " hours or " + minutes + " minutes");
 		System.out.println("If you are going to spend $" + money + " USD that means per day you can spend up to $" + moneyPerDay + " USD");
-		System.out.println("Your total budget in " + currency + " is " + budget + " " + currency + ", which per day is " + budgetPerDay + " " + currency);
+		System.out.println("Your total budget in " + currency + " is " + budget + " " + currency + ", which per day is " + budgetPerDay + " " + currency); 
+		// There is still the problem that moneyPerDay and budgetPerDay per day are visualized with more than 2 decimal digits after the separator. 
 		System.out.println("******************************************");
 		
 		
