@@ -13,8 +13,8 @@ public class VacationPlanner {
 		greeting();
 		timeBudget();
 		timeDifference();
-		/*countryArea();
-		howFar(); */
+		countryArea();
+		
 	}
 
 	public static void greeting() {
@@ -25,7 +25,7 @@ public class VacationPlanner {
 		input = new Scanner (System.in);
 		String destination = input.nextLine();
 		System.out.println("Great! " + destination + " sounds like a great trip");
-		System.out.println("******************************************");
+		System.out.println("******************************************\n");
 	}
 	public static void timeBudget(){
 		DecimalFormat decimalformat = new DecimalFormat("#.##");
@@ -47,18 +47,31 @@ public class VacationPlanner {
 		double exchange = (double)input.nextDouble(); //There is still the problem that if the user while entering the double value instead of , as separator for the decimal part an exception is raised
 		double budget=money * exchange;
 		double budgetPerDay=moneyPerDay * exchange;
+		System.out.println();
 		System.out.println("If you are travelling for " + days + " days that is the same as " + hours + " hours or " + minutes + " minutes");
 		System.out.println("If you are going to spend $" + money + " USD that means per day you can spend up to $" + decimalformat.format(moneyPerDay) + " USD");
 		System.out.println("Your total budget in " + currency + " is " + budget + " " + currency + ", which per day is " + decimalformat.format(budgetPerDay) + " " + currency);
-		System.out.println("******************************************");
+		System.out.println("******************************************\n");
 	}
 	public static void timeDifference(){
 		DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("H:mm");
-		System.out.print("What is the time difference, in hours, between your home and your destination?");
+		System.out.print("What is the time difference, in hours, between your home and your destination? ");
 		Scanner input = new Scanner(System.in);
 		long timeDiff=input.nextInt();
 		LocalTime midnight=LocalTime.MIDNIGHT;
 		LocalTime destinationTime=midnight.plusHours(timeDiff);
 		System.out.println("That means that when it is midnight at home it will be " + destinationTime.format(timeFormat) + " in your travel destination" );
-	}
-}
+		System.out.println("******************************************\n");
+	}                                                                    
+
+    public static void countryArea(){
+    	DecimalFormat decimalformat = new DecimalFormat("#.#");
+    	decimalformat.setRoundingMode(RoundingMode.CEILING);
+    	System.out.println("What is the square area of your destination country in KM2?");
+    	Scanner input = new Scanner(System.in);
+    	double squareArea=input.nextDouble();
+    	double squareAreaMiles= squareArea/2.59;
+    	System.out.println("In miles that is " + decimalformat.format(squareAreaMiles));
+        System.out.println("******************************************"); 
+    }
+}                 
