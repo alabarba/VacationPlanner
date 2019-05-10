@@ -1,5 +1,8 @@
 
 import java.util.Scanner;
+import java.math.*;
+import java.text.*;
+
 public class VacationPlanner {
 	
 	public static void main (String[] args) {
@@ -21,6 +24,8 @@ public class VacationPlanner {
 		System.out.println("******************************************");
 	}
 	public static void timeBudget(){
+		DecimalFormat decimalformat = new DecimalFormat("#.##");
+		decimalformat.setRoundingMode(RoundingMode.CEILING);
 		System.out.print("How many days are you going to spend travelling? ");
 		Scanner input= new Scanner (System.in);
 		int days = input.nextInt();
@@ -39,9 +44,8 @@ public class VacationPlanner {
 		double budget=money * exchange;
 		double budgetPerDay=moneyPerDay * exchange;
 		System.out.println("If you are travelling for " + days + " days that is the same as " + hours + " hours or " + minutes + " minutes");
-		System.out.println("If you are going to spend $" + money + " USD that means per day you can spend up to $" + moneyPerDay + " USD");
-		System.out.println("Your total budget in " + currency + " is " + budget + " " + currency + ", which per day is " + budgetPerDay + " " + currency); 
-		// There is still the problem that moneyPerDay and budgetPerDay per day are visualized with more than 2 decimal digits after the separator. 
+		System.out.println("If you are going to spend $" + money + " USD that means per day you can spend up to $" + decimalformat.format(moneyPerDay) + " USD");
+		System.out.println("Your total budget in " + currency + " is " + budget + " " + currency + ", which per day is " + decimalformat.format(budgetPerDay) + " " + currency);
 		System.out.println("******************************************");
 		
 		
