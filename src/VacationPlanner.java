@@ -1,15 +1,19 @@
 
+
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.math.*;
 import java.text.*;
+
 
 public class VacationPlanner {
 	
 	public static void main (String[] args) {
 		greeting();
 		timeBudget();
-		/*timeDifference();
-		countryArea();
+		timeDifference();
+		/*countryArea();
 		howFar(); */
 	}
 
@@ -47,7 +51,14 @@ public class VacationPlanner {
 		System.out.println("If you are going to spend $" + money + " USD that means per day you can spend up to $" + decimalformat.format(moneyPerDay) + " USD");
 		System.out.println("Your total budget in " + currency + " is " + budget + " " + currency + ", which per day is " + decimalformat.format(budgetPerDay) + " " + currency);
 		System.out.println("******************************************");
-		
-		
+	}
+	public static void timeDifference(){
+		DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("H:mm");
+		System.out.print("What is the time difference, in hours, between your home and your destination?");
+		Scanner input = new Scanner(System.in);
+		long timeDiff=input.nextInt();
+		LocalTime midnight=LocalTime.MIDNIGHT;
+		LocalTime destinationTime=midnight.plusHours(timeDiff);
+		System.out.println("That means that when it is midnight at home it will be " + destinationTime.format(timeFormat) + " in your travel destination" );
 	}
 }
